@@ -32,7 +32,7 @@ public class CoverFlow {
         this.spaceSize   = builder.spaceSize;
 
         if(null == this.viewPager){
-            throw new IllegalArgumentException("A non-null viewPager must be provided");
+            throw new IllegalArgumentException("A non-null ViewPager must be provided");
         }
 
         this.viewPager.setPageTransformer(false,

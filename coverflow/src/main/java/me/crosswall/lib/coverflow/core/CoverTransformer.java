@@ -51,5 +51,8 @@ public class CoverTransformer  implements ViewPager.PageTransformer {
 
             page.setTranslationX(realPagerMargin);
         }
+
+        //TODO
+        //rotate status
     }
 }
