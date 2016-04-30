@@ -15,7 +15,7 @@ public class CoverFlow {
 
  //   public static final float DEFAULT_SPACE_SIZE   = 0f;
 
-    private final ViewPager viewPager;
+    private final ViewPager syncViewPager;
     private final float scaleValue;
     private final float pagerMargin;
     private final float spaceSize;
@@ -26,28 +26,28 @@ public class CoverFlow {
             throw new IllegalArgumentException("A non-null CoverFlow.Builde must be provided");
         }
 
-        this.viewPager   = builder.viewPager;
+        this.syncViewPager = builder.syncViewPager;
         this.scaleValue  = builder.scaleValue;
         this.pagerMargin = builder.pagerMargin;
         this.spaceSize   = builder.spaceSize;
 
-        if(null == this.viewPager){
+        if(null == this.syncViewPager){
             throw new IllegalArgumentException("A non-null ViewPager must be provided");
         }
 
-        this.viewPager.setPageTransformer(false,
+        this.syncViewPager.setPageTransformer(false,
                 new CoverTransformer(this.scaleValue,this.pagerMargin,this.spaceSize));
 
     }
 
     public static class Builder {
-        private ViewPager viewPager;
+        private ViewPager syncViewPager;
         private float scaleValue;
         private float pagerMargin;
         private float spaceSize;
 
-        public CoverFlow.Builder with(ViewPager viewPager) {
-            this.viewPager = viewPager;
+        public CoverFlow.Builder with(ViewPager syncViewPager) {
+            this.syncViewPager = syncViewPager;
             return this;
         }
 

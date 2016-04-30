@@ -1,39 +1,40 @@
 package me.crosswall.coverflow.demo;
 
 import android.graphics.Color;
-import android.graphics.Point;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+
+import me.crosswall.lib.coverflow.core.syncpager.PagerAdapter;
+import me.crosswall.lib.coverflow.core.syncpager.SyncCoverTransformer;
+import me.crosswall.lib.coverflow.core.syncpager.SyncViewPgaer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import me.crosswall.lib.coverflow.core.CoverTransformer;
-import me.crosswall.lib.coverflow.core.PagerContainer;
-import me.crosswall.lib.coverflow.core.SyncViewPager;
+import me.crosswall.lib.coverflow.core.SyncPagerContainer;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int currentPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PagerContainer mContainer = (PagerContainer) findViewById(R.id.pager_container);
+        SyncPagerContainer mContainer = (SyncPagerContainer) findViewById(R.id.pager_container);
 
-        final ViewPager pager = mContainer.getViewPager();
+        final SyncViewPgaer pager = mContainer.getViewPager();
 
         PagerAdapter adapter = new MyPagerAdapter();
         pager.setAdapter(adapter);
 
         pager.setOffscreenPageLimit(adapter.getCount());
+
+        SyncViewPgaer bindingPager = (SyncViewPgaer) findViewById(R.id.pager);
+        bindingPager.setAdapter(adapter);
+        bindingPager.setOffscreenPageLimit(adapter.getCount());
+        bindingPager.setSyncViewPgaer(pager);
         //A little space between pages
        // pager.setPageMargin(15);
 
@@ -41,63 +42,15 @@ public class MainActivity extends AppCompatActivity {
         // clipping on the pager for its children.
         pager.setClipChildren(false);
 
-        pager.setPageTransformer(false,new CoverTransformer(0.3f,0f,0f));
+        pager.setSyncViewPgaer(bindingPager);
 
 
-        final SyncViewPager bindingPager = (SyncViewPager) findViewById(R.id.pager);
-        bindingPager.setAdapter(adapter);
-        bindingPager.setOffscreenPageLimit(adapter.getCount());
+        pager.setPageTransformer(false,new SyncCoverTransformer(0.3f,0f,0f));
 
-        bindingPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.d("@@@","positionOffsetPixels:"+positionOffsetPixels);
-            }
 
-            @Override
-            public void onPageSelected(int position) {
 
-            }
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
 
-            }
-        });
-
-        bindingPager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-               Point touch = new Point();
-
-                switch (event.getAction()){
-                    case MotionEvent.ACTION_DOWN:
-                        touch.x = (int) event.getX();
-                        touch.y = (int) event.getY();
-                        break;
-
-                }
-                pager.onTouchEvent(event);
-                return false;
-            }
-        });
-
-        pager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Point touch = new Point();
-
-                switch (event.getAction()){
-                    case MotionEvent.ACTION_DOWN:
-                        touch.x = (int) event.getX();
-                        touch.y = (int) event.getY();
-                        break;
-
-                }
-                bindingPager.onTouchEvent(event);
-                return false;
-            }
-        });
     }
 
     private class MyPagerAdapter extends PagerAdapter {
