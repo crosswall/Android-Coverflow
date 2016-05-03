@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="me.crosswall.coverflow.demo.MainActivity">
+    tools:context=".SyncPagerActivity">
 
     <me.crosswall.lib.coverflow.core.SyncPagerContainer
         android:id="@+id/pager_container"

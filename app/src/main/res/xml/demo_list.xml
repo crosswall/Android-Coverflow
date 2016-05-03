@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Viewpager">
+        <Preference
+            android:key="normal"
+            android:summary="a simple demo"
+            android:title="normal coverflow" />
+
+        <Preference
+            android:key="normal2"
+            android:summary="a simple demo with page transformer"
+            android:title="transformer coverflow" />
+
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="SyncViewPager">
+
+        <Preference
+            android:key="sync"
+            android:summary="a sync pager demo"
+            android:title="sync coverflow" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

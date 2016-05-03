@@ -14,13 +14,13 @@ import android.widget.TextView;
 
 import me.crosswall.lib.coverflow.core.SyncPagerContainer;
 
-public class MainActivity extends AppCompatActivity {
+public class SyncPagerActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sync);
 
         SyncPagerContainer mContainer = (SyncPagerContainer) findViewById(R.id.pager_container);
 
@@ -35,16 +35,8 @@ public class MainActivity extends AppCompatActivity {
         bindingPager.setAdapter(adapter);
         bindingPager.setOffscreenPageLimit(adapter.getCount());
         bindingPager.setSyncViewPgaer(pager);
-        //A little space between pages
-       // pager.setPageMargin(15);
-
-        //If hardware acceleration is enabled, you should also remove
-        // clipping on the pager for its children.
         pager.setClipChildren(false);
-
         pager.setSyncViewPgaer(bindingPager);
-
-
         pager.setPageTransformer(false,new SyncCoverTransformer(0.3f,0f,0f));
 
 
@@ -57,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            TextView view = new TextView(MainActivity.this);
+            TextView view = new TextView(SyncPagerActivity.this);
             view.setText("Item "+position);
             view.setGravity(Gravity.CENTER);
             view.setBackgroundColor(Color.argb(255, position * 50, position * 10, position * 50));
