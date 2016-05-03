@@ -1,7 +1,7 @@
 ##Android-CoverFlow
 A beautiful cover flow for android platform , base on ViewPager.
 
-###build
+###Build
 #####Step 1. Add the JitPack repository to your build file
 ```build
 allprojects {
@@ -19,7 +19,7 @@ compile 'com.github.crosswall:Android-Coverflow:release-v1.0.0'
 	}
 ```
 
-###layout.xml
+###Layout.xml
 
 ```layout
 <me.crosswall.lib.coverflow.core.PagerContainer
@@ -33,7 +33,7 @@ compile 'com.github.crosswall:Android-Coverflow:release-v1.0.0'
 </me.crosswall.lib.coverflow.core.PagerContainer>
 ```
 
-#### two viewpagers synchronized scrolling.
+#### Two viewpagers synchronized scrolling.
 ```layout
 <rootLayout....
  <me.crosswall.lib.coverflow.core.LinkagePagerContainer
