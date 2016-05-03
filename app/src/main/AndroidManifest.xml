@@ -19,6 +19,9 @@
         <activity android:name=".NormalActivity">
         </activity>
 
+        <activity android:name=".Normal2Activity">
+        </activity>
+
         <activity android:name=".LinkagePagerActivity">
         </activity>
 

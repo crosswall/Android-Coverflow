@@ -24,6 +24,8 @@ public class DemoActivity extends PreferenceActivity implements Preference.OnPre
 
         Preference transformer = manager.findPreference("normal2");
 
+        Preference transformer2 = manager.findPreference("normal3");
+
         Preference linkage1 = manager.findPreference("linkage1");
 
         Preference linkage2 = manager.findPreference("linkage2");
@@ -31,6 +33,8 @@ public class DemoActivity extends PreferenceActivity implements Preference.OnPre
         nomarl.setOnPreferenceClickListener(this);
 
         transformer.setOnPreferenceClickListener(this);
+
+        transformer2.setOnPreferenceClickListener(this);
 
         linkage1.setOnPreferenceClickListener(this);
 
@@ -51,8 +55,14 @@ public class DemoActivity extends PreferenceActivity implements Preference.OnPre
                 intent.setClass(DemoActivity.this,NormalActivity.class);
                 intent.putExtra("showTransformer",true);
                 break;
+            case "normal3":
+                intent.setClass(DemoActivity.this,Normal2Activity.class);
+                intent.putExtra("showTransformer",true);
+                break;
+
             case "linkage1":
                 intent.setClass(DemoActivity.this,LinkagePagerActivity.class);
+                intent.putExtra("showRotate",true);
                 break;
             case "linkage2":
                 intent.setClass(DemoActivity.this,LinkagePager2Activity.class);

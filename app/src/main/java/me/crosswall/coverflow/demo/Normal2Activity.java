@@ -1,53 +1,60 @@
 package me.crosswall.coverflow.demo;
 
 import android.graphics.Color;
-
-import me.crosswall.lib.coverflow.CoverFlow;
-import me.crosswall.lib.coverflow.core.LinkageCoverTransformer;
-import me.crosswall.lib.coverflow.core.LinkagePagerContainer;
-
+import android.os.Bundle;
 import android.support.v4.view.LinkagePager;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class LinkagePagerActivity extends AppCompatActivity {
+import me.crosswall.lib.coverflow.CoverFlow;
+import me.crosswall.lib.coverflow.core.LinkageCoverTransformer;
+import me.crosswall.lib.coverflow.core.LinkagePagerContainer;
+import me.crosswall.lib.coverflow.core.PagerContainer;
+
+public class Normal2Activity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sync);
+        setContentView(R.layout.activity_normal2);
 
-        LinkagePagerContainer mContainer = (LinkagePagerContainer) findViewById(R.id.pager_container);
+        PagerContainer mContainer = (PagerContainer) findViewById(R.id.pager_container);
 
-        final LinkagePager pager = mContainer.getViewPager();
+        final ViewPager pager = mContainer.getViewPager();
 
         PagerAdapter adapter = new MyPagerAdapter();
         pager.setAdapter(adapter);
 
         pager.setOffscreenPageLimit(adapter.getCount());
 
-        LinkagePager bindingPager = (LinkagePager) findViewById(R.id.pager);
-        bindingPager.setAdapter(adapter);
-        bindingPager.setOffscreenPageLimit(adapter.getCount());
-        bindingPager.setLinkagePager(pager);
         pager.setClipChildren(false);
-        pager.setLinkagePager(bindingPager);
 
-        pager.setPageTransformer(false,new LinkageCoverTransformer(0.3f,0f,0f,0f));
 
+        boolean showRotate = getIntent().getBooleanExtra("showRotate",true);
+
+        if(showRotate){
+            new CoverFlow.Builder()
+                    .with(pager)
+                    .scale(0.3f)
+                    .pagerMargin(0f)
+                    .spaceSize(0f)
+                    .rotationY(25f)
+                    .build();
+        }
+        
     }
 
     private class MyPagerAdapter extends PagerAdapter {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            TextView view = new TextView(LinkagePagerActivity.this);
+            TextView view = new TextView(Normal2Activity.this);
             view.setText("Item "+position);
             view.setGravity(Gravity.CENTER);
             view.setBackgroundColor(Color.argb(255, position * 50, position * 10, position * 50));

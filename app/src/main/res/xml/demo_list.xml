@@ -12,6 +12,10 @@
             android:summary="a simple demo with page transformer"
             android:title="transformer coverflow" />
 
+        <Preference
+            android:key="normal3"
+            android:summary="a simple demo with page transformer"
+            android:title="transformer coverflow 2" />
 
     </PreferenceCategory>
 

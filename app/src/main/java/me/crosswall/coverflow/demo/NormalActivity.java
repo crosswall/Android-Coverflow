@@ -36,15 +36,16 @@ public class NormalActivity extends AppCompatActivity{
         pager.setOffscreenPageLimit(15);
 
         boolean showTransformer = getIntent().getBooleanExtra("showTransformer",false);
-        if(showTransformer){
-           // pager.setPageTransformer(false,new CoverTransformer(0.3f,-120f,0f));
 
-            new CoverFlow.Builder()
-                    .with(pager)
-                    .scale(0.3f)
-                    .pagerMargin(getResources().getDimensionPixelSize(R.dimen.pager_margin))
-                    .spaceSize(0f)
-                    .build();
+
+        if(showTransformer){
+
+                new CoverFlow.Builder()
+                        .with(pager)
+                        .scale(0.3f)
+                        .pagerMargin(getResources().getDimensionPixelSize(R.dimen.pager_margin))
+                        .spaceSize(0f)
+                        .build();
 
         }else{
             pager.setPageMargin(30);

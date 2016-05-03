@@ -1,6 +1,7 @@
 package me.crosswall.lib.coverflow.core;
 
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 
 import me.crosswall.lib.coverflow.ScrollUtils;
@@ -18,20 +19,28 @@ public class CoverTransformer implements ViewPager.PageTransformer {
     public static final float MARGIN_MAX = 50f;
     public float scale  = 0f;
 
-    public float pagerMargin = 0f;
-    public float spaceValue = 0f;
+    private float pagerMargin = 0f;
+    private float spaceValue = 0f;
+    private float rotationX    = 0f;
+    private float rotationY    = 0f;
 
-    public CoverTransformer(float scale, float pagerMargin,float spaceValue) {
+    public CoverTransformer(float scale, float pagerMargin,float spaceValue,float rotationY) {
         this.scale = scale;
         this.pagerMargin = pagerMargin;
         this.spaceValue  = spaceValue;
+        this.rotationY   = rotationY;
     }
-
 
     @Override
     public void transformPage(View page, float position) {
 
-       // Log.d(TAG,"position:"+position);
+        Log.d(TAG,"position:"+position);
+
+
+        if(rotationY!=0){
+            float realRotationY = Math.min(rotationY,Math.abs(position * rotationY));
+            page.setRotationY(position < 0f ? realRotationY : - realRotationY);
+        }
 
         if (scale != 0f) {
             float realScale = ScrollUtils.getFloat(1 - Math.abs(position * scale),SCALE_MIN,SCALE_MAX);
@@ -51,7 +60,5 @@ public class CoverTransformer implements ViewPager.PageTransformer {
             page.setTranslationX(realPagerMargin);
         }
 
-        //TODO
-        //rotate status
     }
 }

@@ -20,10 +20,13 @@ public class LinkageCoverTransformer implements LinkagePager.PageTransformer {
     public float pagerMargin = 0f;
     public float spaceValue = 0f;
 
-    public LinkageCoverTransformer(float scale, float pagerMargin, float spaceValue) {
+    private float rotationY    = 0f;
+
+    public LinkageCoverTransformer(float scale, float pagerMargin,float spaceValue,float rotationY) {
         this.scale = scale;
         this.pagerMargin = pagerMargin;
         this.spaceValue  = spaceValue;
+        this.rotationY   = rotationY;
     }
 
 
@@ -52,5 +55,9 @@ public class LinkageCoverTransformer implements LinkagePager.PageTransformer {
 
         //TODO
         //rotate status
+        if(rotationY!=0){
+            float realRotationY = Math.abs(position * rotationY);
+            page.setRotationY(position < 0f ? realRotationY : -realRotationY);
+        }
     }
 }
