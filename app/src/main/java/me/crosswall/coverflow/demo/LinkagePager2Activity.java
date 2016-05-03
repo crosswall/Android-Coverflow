@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.LinkagePager;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -46,6 +47,7 @@ public class LinkagePager2Activity extends AppCompatActivity{
                 }else{
                     tab.setVisibility(View.GONE);
                 }
+
             }
         });
 
@@ -73,7 +75,7 @@ public class LinkagePager2Activity extends AppCompatActivity{
 
         pager.setOffscreenPageLimit(5);
         pager.setAdapter(adapter);
-        
+
         cover.setLinkagePager(pager);
         pager.setLinkagePager(cover);
 
