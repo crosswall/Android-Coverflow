@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="brother_pager_width">150dp</dimen>
+
+    <dimen name="pager_margin">-30dp</dimen>
 </resources>

@@ -32,7 +32,7 @@ public class NormalActivity extends AppCompatActivity{
         ViewPager pager = container.getViewPager();
         pager.setAdapter(new MyPagerAdapter());
         pager.setClipChildren(false);
-        pager.setPageMargin(30);
+       //
         pager.setOffscreenPageLimit(15);
 
         boolean showTransformer = getIntent().getBooleanExtra("showTransformer",false);
@@ -42,10 +42,12 @@ public class NormalActivity extends AppCompatActivity{
             new CoverFlow.Builder()
                     .with(pager)
                     .scale(0.3f)
-                    .pagerMargin(-130f)
+                    .pagerMargin(getResources().getDimensionPixelSize(R.dimen.pager_margin))
                     .spaceSize(0f)
                     .build();
 
+        }else{
+            pager.setPageMargin(30);
         }
     }
 
