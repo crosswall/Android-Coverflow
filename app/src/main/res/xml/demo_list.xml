@@ -19,9 +19,14 @@
     <PreferenceCategory android:title="LinkagePager">
 
         <Preference
-            android:key="linkage"
+            android:key="linkage1"
             android:summary="a linkage pager demo"
             android:title="linkage coverflow" />
+
+        <Preference
+            android:key="linkage2"
+            android:summary="a linkage pager demo"
+            android:title="linkage2 coverflow" />
 
     </PreferenceCategory>
 

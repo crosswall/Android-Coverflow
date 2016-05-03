@@ -5,5 +5,7 @@
 
     <dimen name="brother_pager_width">150dp</dimen>
 
+    <dimen name="cover_pager_height">220dp</dimen>
+
     <dimen name="pager_margin">-30dp</dimen>
 </resources>

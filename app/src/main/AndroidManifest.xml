@@ -21,6 +21,9 @@
 
         <activity android:name=".LinkagePagerActivity">
         </activity>
+
+        <activity android:name=".LinkagePager2Activity">
+        </activity>
     </application>
 
 </manifest>
