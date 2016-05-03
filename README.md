@@ -54,13 +54,13 @@ compile 'com.github.crosswall:Android-Coverflow:release-v1.0.0'
 
 </rootLayout>
 ```
+###JavaCode
 ```java
+//init widget
 LinkagePager aPager = (LinkagePager)findViewById(R.id.pager_a)
-
 LinkagePager bPager = (LinkagePager)findViewById(R.id.pager_b)
-
+//binding scroll
 aPager.setLinkagePager(bPager);
-
 bPager.setLinkagePager(aPager);
 ```
 
