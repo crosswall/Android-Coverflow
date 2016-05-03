@@ -25,5 +25,6 @@ dependencies {
     compile rootProject.ext.appCompat
     compile rootProject.ext.cardView
     compile rootProject.ext.designCompat
+    
     compile project(':coverflow')
 }
