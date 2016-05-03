@@ -22,13 +22,12 @@ import me.crosswall.lib.coverflow.core.LinkagePagerContainer;
 public class LinkagePager2Activity extends AppCompatActivity{
     private LinkagePagerContainer customPagerContainer;
     private LinkagePager pager;
-    private AppBarLayout appBarLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sync_collapsing);
-        appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+
         customPagerContainer = (LinkagePagerContainer) findViewById(R.id.pager_container);
 
         final LinkagePager cover = customPagerContainer.getViewPager();

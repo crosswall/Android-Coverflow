@@ -1,12 +1,13 @@
 package me.crosswall.coverflow.demo.view;
 
 import android.content.Context;
+import android.os.Build;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 
@@ -42,6 +43,8 @@ public class DataDemoView extends LinearLayout{
                 android.R.layout.simple_expandable_list_item_1,
                 getData());
         listview.setAdapter(adapter);
+
+        ViewCompat.setNestedScrollingEnabled(listview, true);
     }
 
     private ArrayList<String> getData()
