@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class SyncPagerActivity extends AppCompatActivity {
+public class LinkagePagerActivity extends AppCompatActivity {
 
 
     @Override
@@ -45,7 +45,7 @@ public class SyncPagerActivity extends AppCompatActivity {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            TextView view = new TextView(SyncPagerActivity.this);
+            TextView view = new TextView(LinkagePagerActivity.this);
             view.setText("Item "+position);
             view.setGravity(Gravity.CENTER);
             view.setBackgroundColor(Color.argb(255, position * 50, position * 10, position * 50));
