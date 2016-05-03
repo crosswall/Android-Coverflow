@@ -19,7 +19,7 @@
         <activity android:name=".NormalActivity">
         </activity>
 
-        <activity android:name=".SyncPagerActivity">
+        <activity android:name=".LinkagePagerActivity">
         </activity>
     </application>
 

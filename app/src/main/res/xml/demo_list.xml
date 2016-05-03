@@ -16,12 +16,12 @@
     </PreferenceCategory>
 
 
-    <PreferenceCategory android:title="SyncViewPager">
+    <PreferenceCategory android:title="LinkagePager">
 
         <Preference
-            android:key="sync"
-            android:summary="a sync pager demo"
-            android:title="sync coverflow" />
+            android:key="linkage"
+            android:summary="a linkage pager demo"
+            android:title="linkage coverflow" />
 
     </PreferenceCategory>
 

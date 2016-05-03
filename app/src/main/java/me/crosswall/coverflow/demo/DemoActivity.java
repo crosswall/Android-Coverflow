@@ -24,7 +24,7 @@ public class DemoActivity extends PreferenceActivity implements Preference.OnPre
 
         Preference transformer = manager.findPreference("normal2");
 
-        Preference sync = manager.findPreference("sync");
+        Preference sync = manager.findPreference("linkage");
 
         nomarl.setOnPreferenceClickListener(this);
 
@@ -47,8 +47,8 @@ public class DemoActivity extends PreferenceActivity implements Preference.OnPre
                 intent.setClass(DemoActivity.this,NormalActivity.class);
                 intent.putExtra("showTransformer",true);
                 break;
-            case "sync":
-                intent.setClass(DemoActivity.this,SyncPagerActivity.class);
+            case "linkage":
+                intent.setClass(DemoActivity.this,LinkagePagerActivity.class);
                 break;
         }
 
