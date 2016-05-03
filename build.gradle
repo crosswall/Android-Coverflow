@@ -28,4 +28,5 @@ ext{
     supportV4 = "com.android.support:support-v4:${supportVersion}"
     appCompat = "com.android.support:appcompat-v7:${supportVersion}"
     cardView  = "com.android.support:cardview-v7:${supportVersion}"
+    designCompat  = "com.android.support:design:${supportVersion}"
 }
