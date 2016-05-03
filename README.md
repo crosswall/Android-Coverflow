@@ -5,18 +5,18 @@ A beautiful cover flow for android platform , base on ViewPager.
 #####Step 1. Add the JitPack repository to your build file
 ```build
 allprojects {
-		repositories {
+	repositories {
 			...
 			maven { url "https://jitpack.io" }
-		}
 	}
+}
 ```
 
 #####Step 2. Add the dependency
 ```build
 dependencies {
 	compile 'com.github.crosswall:Android-Coverflow:release-v1.0.0'
-    }
+}
 ```
 
 ###Layout.xml
