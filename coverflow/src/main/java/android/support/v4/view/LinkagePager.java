@@ -1,20 +1,4 @@
-/*
- * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package me.crosswall.lib.coverflow.core.syncpager;
+package android.support.v4.view;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -32,13 +16,6 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.DrawableRes;
 import android.support.v4.os.ParcelableCompat;
 import android.support.v4.os.ParcelableCompatCreatorCallbacks;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.KeyEventCompat;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.VelocityTrackerCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewConfigurationCompat;
-import android.support.v4.view.WindowInsetsCompat;
 import android.support.v4.view.accessibility.AccessibilityEventCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.view.accessibility.AccessibilityRecordCompat;
@@ -79,7 +56,7 @@ import java.util.List;
  * which is a convenient way to supply and manage the lifecycle of each page.
  * There are standard adapters implemented for using fragments with the ViewPager,
  * which cover the most common use cases.  These are
- * {@link android.support.v4.app.FragmentPagerAdapter} and 
+ * {@link android.support.v4.app.FragmentPagerAdapter} and
  * {@link android.support.v4.app.FragmentStatePagerAdapter}; each of these
  * classes have simple code showing how to build a full user interface
  * with them.
@@ -95,7 +72,7 @@ import java.util.List;
  * {@sample development/samples/Support13Demos/src/com/example/android/supportv13/app/ActionBarTabsPager.java
  *      complete}
  */
-public class SyncViewPgaer extends ViewGroup {
+public class LinkagePager extends ViewGroup {
     private static final String TAG = "ViewPager";
     private static final boolean DEBUG = false;
 
@@ -110,7 +87,7 @@ public class SyncViewPgaer extends ViewGroup {
     private static final int MIN_FLING_VELOCITY = 400; // dips
 
     private static final int[] LAYOUT_ATTRS = new int[] {
-        android.R.attr.layout_gravity
+            android.R.attr.layout_gravity
     };
 
     /**
@@ -120,7 +97,7 @@ public class SyncViewPgaer extends ViewGroup {
     private int mExpectedAdapterCount;
 
 
-    private SyncViewPgaer syncViewPgaer;
+    private LinkagePager linkagePager;
 
     static class ItemInfo {
         Object object;
@@ -297,9 +274,9 @@ public class SyncViewPgaer extends ViewGroup {
          * or when it is fully stopped/idle.
          *
          * @param state The new scroll state.
-         * @see SyncViewPgaer#SCROLL_STATE_IDLE
-         * @see SyncViewPgaer#SCROLL_STATE_DRAGGING
-         * @see SyncViewPgaer#SCROLL_STATE_SETTLING
+         * @see LinkagePager#SCROLL_STATE_IDLE
+         * @see LinkagePager#SCROLL_STATE_DRAGGING
+         * @see LinkagePager#SCROLL_STATE_SETTLING
          */
         public void onPageScrollStateChanged(int state);
     }
@@ -360,12 +337,12 @@ public class SyncViewPgaer extends ViewGroup {
      */
     interface Decor {}
 
-    public SyncViewPgaer(Context context) {
+    public LinkagePager(Context context) {
         super(context);
         initViewPager();
     }
 
-    public SyncViewPgaer(Context context, AttributeSet attrs) {
+    public LinkagePager(Context context, AttributeSet attrs) {
         super(context, attrs);
         initViewPager();
     }
@@ -447,8 +424,8 @@ public class SyncViewPgaer extends ViewGroup {
                 });
     }
 
-    public void setSyncViewPgaer(SyncViewPgaer syncViewPgaer) {
-        this.syncViewPgaer = syncViewPgaer;
+    public void setLinkagePager(LinkagePager linkagePager) {
+        this.linkagePager = linkagePager;
     }
 
     @Override
@@ -625,7 +602,7 @@ public class SyncViewPgaer extends ViewGroup {
     }
 
     private void scrollToItem(int item, boolean smoothScroll, int velocity,
-            boolean dispatchSelected) {
+                              boolean dispatchSelected) {
         final ItemInfo curInfo = infoForPosition(item);
         int destX = 0;
         if (curInfo != null) {
@@ -1254,7 +1231,7 @@ public class SyncViewPgaer extends ViewGroup {
                 ItemInfo ii = null;
                 float offset = oldCurInfo.offset + oldCurInfo.widthFactor + marginOffset;
                 for (int pos = oldCurPosition + 1;
-                        pos <= curItem.position && itemIndex < mItems.size(); pos++) {
+                     pos <= curItem.position && itemIndex < mItems.size(); pos++) {
                     ii = mItems.get(itemIndex);
                     while (pos > ii.position && itemIndex < mItems.size() - 1) {
                         itemIndex++;
@@ -1274,7 +1251,7 @@ public class SyncViewPgaer extends ViewGroup {
                 ItemInfo ii = null;
                 float offset = oldCurInfo.offset;
                 for (int pos = oldCurPosition - 1;
-                        pos >= curItem.position && itemIndex >= 0; pos--) {
+                     pos >= curItem.position && itemIndex >= 0; pos--) {
                     ii = mItems.get(itemIndex);
                     while (pos < ii.position && itemIndex > 0) {
                         itemIndex--;
@@ -1358,15 +1335,15 @@ public class SyncViewPgaer extends ViewGroup {
 
         public static final Parcelable.Creator<SavedState> CREATOR
                 = ParcelableCompat.newCreator(new ParcelableCompatCreatorCallbacks<SavedState>() {
-                    @Override
-                    public SavedState createFromParcel(Parcel in, ClassLoader loader) {
-                        return new SavedState(in, loader);
-                    }
-                    @Override
-                    public SavedState[] newArray(int size) {
-                        return new SavedState[size];
-                    }
-                });
+            @Override
+            public SavedState createFromParcel(Parcel in, ClassLoader loader) {
+                return new SavedState(in, loader);
+            }
+            @Override
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        });
 
         SavedState(Parcel in, ClassLoader loader) {
             super(in);
@@ -1605,7 +1582,7 @@ public class SyncViewPgaer extends ViewGroup {
             final ItemInfo ii = infoForPosition(mCurItem);
             final float scrollOffset = ii != null ? Math.min(ii.offset, mLastOffset) : 0;
             final int scrollPos = (int) (scrollOffset *
-                                         (width - getPaddingLeft() - getPaddingRight()));
+                    (width - getPaddingLeft() - getPaddingRight()));
             if (scrollPos != getScrollX()) {
                 completeScroll(false);
                 scrollTo(scrollPos, getScrollY());
@@ -2186,8 +2163,8 @@ public class SyncViewPgaer extends ViewGroup {
                     int nextPage = determineTargetPage(currentPage, pageOffset, initialVelocity,
                             totalDelta);
                     setCurrentItemInternal(nextPage, true, true, initialVelocity);
-                    if(syncViewPgaer!=null){
-                        syncViewPgaer.setCurrentItemInternal(nextPage, true, true, initialVelocity);
+                    if(linkagePager!=null){
+                        linkagePager.setCurrentItemInternal(nextPage, true, true, initialVelocity);
                     }
                     needsInvalidate = resetTouch();
                 }
@@ -2276,8 +2253,8 @@ public class SyncViewPgaer extends ViewGroup {
         scrollTo((int) scrollX, getScrollY());
 
         final float pageOffset =  scrollX / width;
-        if(syncViewPgaer!=null){
-            syncViewPgaer.scrollTo( (int)(pageOffset * syncViewPgaer.getWidth()), syncViewPgaer.getScrollY());
+        if(linkagePager!=null){
+            linkagePager.scrollTo( (int)(pageOffset * linkagePager.getWidth()), linkagePager.getScrollY());
         }
 
         pageScrolled((int) scrollX);
@@ -2707,7 +2684,7 @@ public class SyncViewPgaer extends ViewGroup {
         } else if (currentFocused != null) {
             boolean isChild = false;
             for (ViewParent parent = currentFocused.getParent(); parent instanceof ViewGroup;
-                    parent = parent.getParent()) {
+                 parent = parent.getParent()) {
                 if (parent == this) {
                     isChild = true;
                     break;
@@ -2718,7 +2695,7 @@ public class SyncViewPgaer extends ViewGroup {
                 final StringBuilder sb = new StringBuilder();
                 sb.append(currentFocused.getClass().getSimpleName());
                 for (ViewParent parent = currentFocused.getParent(); parent instanceof ViewGroup;
-                        parent = parent.getParent()) {
+                     parent = parent.getParent()) {
                     sb.append(" => ").append(parent.getClass().getSimpleName());
                 }
                 Log.e(TAG, "arrowScroll tried to find focus based on non-child " +
@@ -2834,9 +2811,9 @@ public class SyncViewPgaer extends ViewGroup {
         // to avoid the focus search finding layouts when a more precise search
         // among the focusable children would be more interesting.
         if (
-            descendantFocusability != FOCUS_AFTER_DESCENDANTS ||
-                // No focusable descendants
-                (focusableCount == views.size())) {
+                descendantFocusability != FOCUS_AFTER_DESCENDANTS ||
+                        // No focusable descendants
+                        (focusableCount == views.size())) {
             // Note that we can't call the superclass here, because it will
             // add all views in.  So we need to do the same thing View does.
             if (!isFocusable()) {
@@ -2876,7 +2853,7 @@ public class SyncViewPgaer extends ViewGroup {
      */
     @Override
     protected boolean onRequestFocusInDescendants(int direction,
-            Rect previouslyFocusedRect) {
+                                                  Rect previouslyFocusedRect) {
         int index;
         int increment;
         int end;
@@ -2952,7 +2929,7 @@ public class SyncViewPgaer extends ViewGroup {
         @Override
         public void onInitializeAccessibilityEvent(View host, AccessibilityEvent event) {
             super.onInitializeAccessibilityEvent(host, event);
-            event.setClassName(SyncViewPgaer.class.getName());
+            event.setClassName(LinkagePager.class.getName());
             final AccessibilityRecordCompat recordCompat =
                     AccessibilityEventCompat.asRecord(event);
             recordCompat.setScrollable(canScroll());
@@ -2967,7 +2944,7 @@ public class SyncViewPgaer extends ViewGroup {
         @Override
         public void onInitializeAccessibilityNodeInfo(View host, AccessibilityNodeInfoCompat info) {
             super.onInitializeAccessibilityNodeInfo(host, info);
-            info.setClassName(SyncViewPgaer.class.getName());
+            info.setClassName(LinkagePager.class.getName());
             info.setScrollable(canScroll());
             if (canScrollHorizontally(1)) {
                 info.addAction(AccessibilityNodeInfoCompat.ACTION_SCROLL_FORWARD);

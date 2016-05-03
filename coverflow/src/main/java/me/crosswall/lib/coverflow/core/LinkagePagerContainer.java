@@ -3,35 +3,35 @@ package me.crosswall.lib.coverflow.core;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Point;
+import android.support.v4.view.LinkagePager;
+import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import me.crosswall.lib.coverflow.core.syncpager.SyncViewPgaer;
-
 /**
  * PagerContainer: A layout that displays a ViewPager with its children that are outside
  * the typical pager bounds.
- * @link(https://gist.github.com/devunwired/8cbe094bb7a783e37ad1)
+ *    @see(<a href = "https://gist.github.com/devunwired/8cbe094bb7a783e37ad1"></>)
  */
-public class SyncPagerContainer extends FrameLayout implements SyncViewPgaer.OnPageChangeListener {
+public class LinkagePagerContainer extends FrameLayout implements LinkagePager.OnPageChangeListener {
 
-    private SyncViewPgaer mPager;
+    private LinkagePager mPager;
     boolean mNeedsRedraw = false;
 
-    public SyncPagerContainer(Context context) {
+    public LinkagePagerContainer(Context context) {
         super(context);
         init();
     }
 
-    public SyncPagerContainer(Context context, AttributeSet attrs) {
+    public LinkagePagerContainer(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public SyncPagerContainer(Context context, AttributeSet attrs, int defStyle) {
+    public LinkagePagerContainer(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
@@ -51,14 +51,14 @@ public class SyncPagerContainer extends FrameLayout implements SyncViewPgaer.OnP
     @Override
     protected void onFinishInflate() {
         try {
-            mPager = (SyncViewPgaer) getChildAt(0);
+            mPager = (LinkagePager) getChildAt(0);
             mPager.addOnPageChangeListener(this);
         } catch (Exception e) {
             throw new IllegalStateException("The root child of PagerContainer must be a ViewPager");
         }
     }
 
-    public SyncViewPgaer getViewPager() {
+    public LinkagePager getViewPager() {
         return mPager;
     }
 
@@ -86,6 +86,7 @@ public class SyncPagerContainer extends FrameLayout implements SyncViewPgaer.OnP
             default:
                 float deltaX = mCenter.x - mInitialTouch.x;
                 float deltaY = mCenter.y - mInitialTouch.y;
+              //  Log.d("@@@@","deltaX:"+ deltaX + "," + "deltaY" + deltaY);
                 ev.offsetLocation(deltaX, deltaY);
                 break;
         }
@@ -106,6 +107,6 @@ public class SyncPagerContainer extends FrameLayout implements SyncViewPgaer.OnP
 
     @Override
     public void onPageScrollStateChanged(int state) {
-        mNeedsRedraw = (state != SyncViewPgaer.SCROLL_STATE_IDLE);
+        mNeedsRedraw = (state != ViewPager.SCROLL_STATE_IDLE);
     }
 }

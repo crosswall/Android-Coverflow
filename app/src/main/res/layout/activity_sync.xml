@@ -7,19 +7,19 @@
     android:orientation="vertical"
     tools:context=".SyncPagerActivity">
 
-    <me.crosswall.lib.coverflow.core.SyncPagerContainer
+    <me.crosswall.lib.coverflow.core.LinkagePagerContainer
         android:id="@+id/pager_container"
         android:layout_width="match_parent"
         android:layout_height="180dp">
 
-        <me.crosswall.lib.coverflow.core.syncpager.SyncViewPgaer
+        <android.support.v4.view.LinkagePager
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"/>
 
-    </me.crosswall.lib.coverflow.core.SyncPagerContainer>
+    </me.crosswall.lib.coverflow.core.LinkagePagerContainer>
 
-    <me.crosswall.lib.coverflow.core.syncpager.SyncViewPgaer
+    <android.support.v4.view.LinkagePager
         android:id="@+id/pager"
         android:layout_gravity="center"
         android:layout_width="match_parent"

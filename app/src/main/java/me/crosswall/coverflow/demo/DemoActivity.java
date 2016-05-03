@@ -6,7 +6,6 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
-import me.crosswall.lib.coverflow.core.syncpager.SyncViewPgaer;
 
 /**
  * Created by yuweichen on 16/4/30.

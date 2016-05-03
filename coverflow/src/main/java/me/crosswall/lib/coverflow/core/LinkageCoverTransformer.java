@@ -1,4 +1,5 @@
-package me.crosswall.lib.coverflow.core.syncpager;
+package me.crosswall.lib.coverflow.core;
+import android.support.v4.view.LinkagePager;
 import android.view.View;
 
 import me.crosswall.lib.coverflow.ScrollUtils;
@@ -6,7 +7,7 @@ import me.crosswall.lib.coverflow.ScrollUtils;
 /**
  * Created by yuweichen on 16/4/29.
  */
-public class SyncCoverTransformer implements SyncViewPgaer.PageTransformer {
+public class LinkageCoverTransformer implements LinkagePager.PageTransformer {
 
     public static final String TAG = "CoverTransformer";
 
@@ -19,7 +20,7 @@ public class SyncCoverTransformer implements SyncViewPgaer.PageTransformer {
     public float pagerMargin = 0f;
     public float spaceValue = 0f;
 
-    public SyncCoverTransformer(float scale, float pagerMargin, float spaceValue) {
+    public LinkageCoverTransformer(float scale, float pagerMargin, float spaceValue) {
         this.scale = scale;
         this.pagerMargin = pagerMargin;
         this.spaceValue  = spaceValue;
