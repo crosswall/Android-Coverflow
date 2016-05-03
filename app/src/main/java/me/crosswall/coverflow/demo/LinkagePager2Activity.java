@@ -7,6 +7,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.LinkagePager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +23,35 @@ import me.crosswall.lib.coverflow.core.LinkagePagerContainer;
 public class LinkagePager2Activity extends AppCompatActivity{
     private LinkagePagerContainer customPagerContainer;
     private LinkagePager pager;
-
+    private AppBarLayout appBarLayout;
+    private int parallaxHeight;
+    private View tab;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sync_collapsing);
 
+        parallaxHeight = getResources().getDimensionPixelSize(R.dimen.cover_pager_height) - getResources().getDimensionPixelSize(R.dimen.tab_height);
+
+        Log.d("###","parallaxHeight:" + parallaxHeight);
+
+        appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+               // Log.d("###","verticalOffset: " + Math.abs(verticalOffset));
+                if(Math.abs(verticalOffset) >= parallaxHeight){
+                    tab.setVisibility(View.VISIBLE);
+                }else{
+                    tab.setVisibility(View.GONE);
+                }
+            }
+        });
+
         customPagerContainer = (LinkagePagerContainer) findViewById(R.id.pager_container);
+
+        tab = findViewById(R.id.tab);
 
         final LinkagePager cover = customPagerContainer.getViewPager();
 
@@ -50,12 +73,9 @@ public class LinkagePager2Activity extends AppCompatActivity{
 
         pager.setOffscreenPageLimit(5);
         pager.setAdapter(adapter);
-
-
+        
         cover.setLinkagePager(pager);
         pager.setLinkagePager(cover);
-
-
 
     }
 

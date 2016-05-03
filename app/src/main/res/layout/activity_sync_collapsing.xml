@@ -46,6 +46,7 @@
         app:target="@id/pager_container">
 
         <View
+            android:id="@+id/tab"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="?attr/colorAccent"

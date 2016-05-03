@@ -7,5 +7,7 @@
 
     <dimen name="cover_pager_height">220dp</dimen>
 
+    <dimen name="tab_height">48dp</dimen>
+
     <dimen name="pager_margin">-30dp</dimen>
 </resources>

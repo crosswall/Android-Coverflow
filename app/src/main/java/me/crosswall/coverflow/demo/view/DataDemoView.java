@@ -1,7 +1,6 @@
 package me.crosswall.coverflow.demo.view;
 
 import android.content.Context;
-import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
