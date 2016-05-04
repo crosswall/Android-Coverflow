@@ -3,6 +3,9 @@ A beautiful cover flow for android platform , base on ViewPager.
 
 ###[Demo Vedio](https://youtu.be/2FEp33kisz4)
 
+##GIF
+<img src="https://github.com/crosswall/Android-Coverflow/blob/master/gif/3.pic_hd.gif" width="40%" height="40%">
+
 
 ###Build
 #####Step 1. Add the JitPack repository to your build file
