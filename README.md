@@ -1,6 +1,9 @@
 ##Android-CoverFlow
 A beautiful cover flow for android platform , base on ViewPager.
 
+###[Demo Vedio](https://youtu.be/2FEp33kisz4)
+
+
 ###Build
 #####Step 1. Add the JitPack repository to your build file
 ```build
@@ -104,5 +107,3 @@ SOFTWARE.
 
 Status API Training Shop Blog About Pricing
 ```
-
-
