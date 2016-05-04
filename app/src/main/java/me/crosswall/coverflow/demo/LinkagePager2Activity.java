@@ -26,13 +26,15 @@ public class LinkagePager2Activity extends AppCompatActivity{
     private LinkagePager pager;
     private AppBarLayout appBarLayout;
     private int parallaxHeight;
+    private int tabHeight;
     private View tab;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sync_collapsing);
 
-        parallaxHeight = getResources().getDimensionPixelSize(R.dimen.cover_pager_height) - getResources().getDimensionPixelSize(R.dimen.tab_height);
+        parallaxHeight = getResources().getDimensionPixelSize(R.dimen.cover_pager_height);
+        tabHeight = getResources().getDimensionPixelSize(R.dimen.tab_height);
 
         Log.d("###","parallaxHeight:" + parallaxHeight);
 
@@ -42,7 +44,7 @@ public class LinkagePager2Activity extends AppCompatActivity{
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                // Log.d("###","verticalOffset: " + Math.abs(verticalOffset));
-                if(Math.abs(verticalOffset) >= parallaxHeight){
+                if(parallaxHeight - Math.abs(verticalOffset) <= tabHeight){
                     tab.setVisibility(View.VISIBLE);
                 }else{
                     tab.setVisibility(View.GONE);

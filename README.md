@@ -32,6 +32,16 @@ dependencies {
 
 </me.crosswall.lib.coverflow.core.PagerContainer>
 ```
+```java
+ new CoverFlow.Builder()
+             .with(viewpager)
+             .pagerMargin(0f)
+             .scale(0.3f)
+             .spaceSize(0f)
+             .rotationY(0f)
+             .build();
+
+```
 
 #### Two viewpagers synchronized scrolling.
 ```layout
@@ -54,7 +64,6 @@ dependencies {
 
 </rootLayout>
 ```
-###JavaCode
 ```java
 //init widget
 LinkagePager aPager = (LinkagePager)findViewById(R.id.pager_a)
@@ -63,6 +72,11 @@ LinkagePager bPager = (LinkagePager)findViewById(R.id.pager_b)
 aPager.setLinkagePager(bPager);
 bPager.setLinkagePager(aPager);
 ```
+
+###TODO
+>* HorizontalScrollView replace LinkagePager
+>* More CoordinatorLayout.Behavior...
+>* More Configurations...
 
 ###Lincense
 ```lincense
