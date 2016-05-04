@@ -18,7 +18,7 @@ allprojects {
 #####Step 2. Add the dependency
 ```build
 dependencies {
-	compile 'com.github.crosswall:Android-Coverflow:release-v1.0.0'
+	compile 'com.github.crosswall:Android-Coverflow:release-v1.0.1'
 }
 ```
 
