@@ -24,7 +24,10 @@ allprojects {
 #####Step 2. Add the dependency
 ```build
 dependencies {
-	compile 'com.github.crosswall:Android-Coverflow:release-v1.0.1'
+	//orginal dep
+	//compile 'com.github.crosswall:Android-Coverflow:release-v1.0.1'
+	//dep with lower api
+	compile 'com.github.ZeDzislaw:Android-Coverflow:lowerapi-v1.0.4'
 }
 ```
 
