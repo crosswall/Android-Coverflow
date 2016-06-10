@@ -1,6 +1,8 @@
 ##Android-CoverFlow
 A beautiful cover flow for android platform , base on ViewPager.
 
+### Forked and changed version for supporting lower API's.
+
 ###[Demo Vedio](https://youtu.be/2FEp33kisz4)
 
 ##GIF
