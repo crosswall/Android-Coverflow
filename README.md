@@ -1,4 +1,7 @@
 ##Android-CoverFlow
+
+### Forked and changed version for supporting lower API's.
+
 A beautiful cover flow for android platform , base on ViewPager.
 
 ###[Demo Vedio](https://youtu.be/2FEp33kisz4)
@@ -21,7 +24,10 @@ allprojects {
 #####Step 2. Add the dependency
 ```build
 dependencies {
-	compile 'com.github.crosswall:Android-Coverflow:release-v1.0.1'
+	//orginal dep
+	//compile 'com.github.crosswall:Android-Coverflow:release-v1.0.1'
+	//dep with lower api
+	compile 'com.github.ZeDzislaw:Android-Coverflow:lowerapi-v1.0.4'
 }
 ```
 
