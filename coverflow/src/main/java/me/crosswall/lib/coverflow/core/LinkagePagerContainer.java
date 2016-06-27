@@ -3,7 +3,9 @@ package me.crosswall.lib.coverflow.core;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Point;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.LinkagePager;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -20,6 +22,7 @@ public class LinkagePagerContainer extends FrameLayout implements LinkagePager.O
 
     private LinkagePager mPager;
     boolean mNeedsRedraw = false;
+    boolean isOverlapEnabled = false;
 
     public LinkagePagerContainer(Context context) {
         super(context);
@@ -44,6 +47,10 @@ public class LinkagePagerContainer extends FrameLayout implements LinkagePager.O
         //You need to set this value here if using hardware acceleration in an
         // application targeted at these releases.
         setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+    }
+
+    public void setOverlapEnabled(boolean overlapEnabled) {
+        isOverlapEnabled = overlapEnabled;
     }
 
 
@@ -103,7 +110,35 @@ public class LinkagePagerContainer extends FrameLayout implements LinkagePager.O
     }
 
     @Override
-    public void onPageSelected(int position) { }
+    public void onPageSelected(int position) {
+        if (isOverlapEnabled) {
+            //Counter for loop
+            int loopCounter = 0;
+            int PAGER_LOOP_THRESHOLD = 2;
+
+            //SET THE START POINT back 2 fragments
+            if (position >= PAGER_LOOP_THRESHOLD) {
+                loopCounter = position - PAGER_LOOP_THRESHOLD;
+            }
+            do {
+                if (loopCounter < mPager.getAdapter().getCount()) {
+                    Fragment fragment =
+                        (Fragment) mPager.getAdapter().instantiateItem(mPager, loopCounter);
+
+
+                    //Elevate the Center View if it's the selected position and de-elevate the left and right fragment
+                    if (loopCounter == position) {
+                        ViewCompat.setElevation(fragment.getView(), 8.0f);
+                    } else {
+                        ViewCompat.setElevation(fragment.getView(), 0.0f);
+                    }
+                }
+                loopCounter++;
+            } while (loopCounter < position + PAGER_LOOP_THRESHOLD);
+        }
+
+
+    }
 
     @Override
     public void onPageScrollStateChanged(int state) {
