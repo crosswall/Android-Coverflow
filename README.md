@@ -79,6 +79,12 @@ aPager.setLinkagePager(bPager);
 bPager.setLinkagePager(aPager);
 ```
 
+
+#### To Enable Overlapping
+```java
+mPagerContainer.setOverlapEnabled(true);
+```
+
 ###TODO
 >* HorizontalScrollView replace LinkagePager
 >* More CoordinatorLayout.Behavior...
