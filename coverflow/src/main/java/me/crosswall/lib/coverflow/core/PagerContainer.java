@@ -124,10 +124,12 @@ public class PagerContainer extends FrameLayout implements ViewPager.OnPageChang
 
 
                     //Elevate the Center View if it's the selected position and de-elevate the left and right fragment
-                    if (loopCounter == position) {
-                        ViewCompat.setElevation(fragment.getView(), 8.0f);
-                    } else {
-                        ViewCompat.setElevation(fragment.getView(), 0.0f);
+                    if (fragment.getView() != null) {
+                        if (loopCounter == position) {
+                            ViewCompat.setElevation(fragment.getView(), 8.0f);
+                        } else {
+                            ViewCompat.setElevation(fragment.getView(), 0.0f);
+                        }
                     }
                 }
                 loopCounter++;
