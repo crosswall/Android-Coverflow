@@ -93,7 +93,7 @@ public class LinkagePagerContainer extends FrameLayout implements LinkagePager.O
             default:
                 float deltaX = mCenter.x - mInitialTouch.x;
                 float deltaY = mCenter.y - mInitialTouch.y;
-              //  Log.d("@@@@","deltaX:"+ deltaX + "," + "deltaY" + deltaY);
+                //  Log.d("@@@@","deltaX:"+ deltaX + "," + "deltaY" + deltaY);
                 ev.offsetLocation(deltaX, deltaY);
                 break;
         }
