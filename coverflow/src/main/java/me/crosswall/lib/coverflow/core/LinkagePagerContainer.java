@@ -93,7 +93,7 @@ public class LinkagePagerContainer extends FrameLayout implements LinkagePager.O
             default:
                 float deltaX = mCenter.x - mInitialTouch.x;
                 float deltaY = mCenter.y - mInitialTouch.y;
-              //  Log.d("@@@@","deltaX:"+ deltaX + "," + "deltaY" + deltaY);
+                //  Log.d("@@@@","deltaX:"+ deltaX + "," + "deltaY" + deltaY);
                 ev.offsetLocation(deltaX, deltaY);
                 break;
         }
@@ -122,16 +122,23 @@ public class LinkagePagerContainer extends FrameLayout implements LinkagePager.O
             }
             do {
                 if (loopCounter < mPager.getAdapter().getCount()) {
-                    Fragment fragment =
-                        (Fragment) mPager.getAdapter().instantiateItem(mPager, loopCounter);
 
-
+                    Object object = mPager.getAdapter().instantiateItem(mPager, loopCounter);
                     //Elevate the Center View if it's the selected position and de-elevate the left and right fragment
-                    if (fragment.getView() != null) {
+
+                    if(object instanceof Fragment){
+                        Fragment fragment = (Fragment) object;
                         if (loopCounter == position) {
                             ViewCompat.setElevation(fragment.getView(), 8.0f);
                         } else {
                             ViewCompat.setElevation(fragment.getView(), 0.0f);
+                        }
+                    }else{
+                        View view = (View) object;
+                        if (loopCounter == position) {
+                            ViewCompat.setElevation(view, 8.0f);
+                        } else {
+                            ViewCompat.setElevation(view, 0.0f);
                         }
                     }
                 }
