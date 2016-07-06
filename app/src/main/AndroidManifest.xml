@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.crosswall.coverflow.demo">
+<manifest package="me.crosswall.coverflow.demo"
+  xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".DemoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+  <application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+    <activity android:name=".DemoActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
 
-        <activity android:name=".NormalActivity">
-        </activity>
+    <activity android:name=".NormalActivity"></activity>
 
-        <activity android:name=".Normal2Activity">
-        </activity>
+    <activity android:name=".Normal2Activity"></activity>
 
-        <activity android:name=".Linkage0PagerActivity">
-        </activity>
+    <activity android:name=".OverlapActivity" />
 
-        <activity android:name=".LinkagePagerActivity">
-        </activity>
+    <activity android:name=".Linkage0PagerActivity"></activity>
 
-        <activity android:name=".LinkagePager2Activity">
-        </activity>
-    </application>
+    <activity android:name=".LinkagePagerActivity"></activity>
+
+    <activity android:name=".LinkagePager2Activity"></activity>
+  </application>
 
 </manifest>
