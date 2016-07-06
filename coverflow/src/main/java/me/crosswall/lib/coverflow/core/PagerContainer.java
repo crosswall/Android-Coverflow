@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 /**
@@ -107,7 +108,7 @@ public class PagerContainer extends FrameLayout implements ViewPager.OnPageChang
       int loopCounter = 0;
       int PAGER_LOOP_THRESHOLD = 2;
 
-      //SET THE START POINT back 2 fragments
+      //SET THE START POINT back 2 views
       if (position >= PAGER_LOOP_THRESHOLD) {
         loopCounter = position - PAGER_LOOP_THRESHOLD;
       }
@@ -125,7 +126,7 @@ public class PagerContainer extends FrameLayout implements ViewPager.OnPageChang
               ViewCompat.setElevation(fragment.getView(), 0.0f);
             }
           } else {
-            View view = (View) object;
+            ViewGroup view = (ViewGroup) object;
             if (loopCounter == position) {
               ViewCompat.setElevation(view, 8.0f);
             } else {

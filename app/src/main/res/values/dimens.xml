@@ -10,4 +10,6 @@
     <dimen name="tab_height">48dp</dimen>
 
     <dimen name="pager_margin">-30dp</dimen>
+
+    <dimen name="overlap_pager_margin">-60dp</dimen>
 </resources>

@@ -6,7 +6,6 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
-
 /**
  * Created by yuweichen on 16/4/30.
  */
@@ -26,6 +25,8 @@ public class DemoActivity extends PreferenceActivity implements Preference.OnPre
 
         Preference transformer2 = manager.findPreference("normal3");
 
+        Preference overlap = manager.findPreference("overlap");
+
         Preference linkage0 = manager.findPreference("linkage0");
 
         Preference linkage1 = manager.findPreference("linkage1");
@@ -37,6 +38,8 @@ public class DemoActivity extends PreferenceActivity implements Preference.OnPre
         transformer.setOnPreferenceClickListener(this);
 
         transformer2.setOnPreferenceClickListener(this);
+
+        overlap.setOnPreferenceClickListener(this);
 
         linkage0.setOnPreferenceClickListener(this);
 
@@ -62,6 +65,9 @@ public class DemoActivity extends PreferenceActivity implements Preference.OnPre
             case "normal3":
                 intent.setClass(DemoActivity.this,Normal2Activity.class);
                 intent.putExtra("showTransformer",true);
+                break;
+            case "overlap":
+                intent.setClass(DemoActivity.this, OverlapActivity.class);
                 break;
             case "linkage0":
                 intent.setClass(DemoActivity.this,Linkage0PagerActivity.class);

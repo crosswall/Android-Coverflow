@@ -17,6 +17,11 @@
             android:summary="a simple demo with page transformer"
             android:title="transformer coverflow 2" />
 
+        <Preference
+          android:key="overlap"
+          android:summary="a simple demo with overlapping viewpager"
+          android:title="Overlapping CoverFlow" />
+
     </PreferenceCategory>
 
 
