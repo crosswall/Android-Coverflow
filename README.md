@@ -88,6 +88,17 @@ bPager.setLinkagePager(aPager);
 mPagerContainer.setOverlapEnabled(true);
 ```
 
+You might want to manually set the first view to be elevated, this can easily be done with this line of code
+```java
+ //Manually setting the first View to be elevated
+    viewPager.post(new Runnable() {
+      @Override public void run() {
+        Fragment fragment = (Fragment) viewPager.getAdapter().instantiateItem(viewPager, 0);
+        ViewCompat.setElevation(fragment.getView(), 8.0f);
+      }
+    });
+```
+
 ###TODO
 >* HorizontalScrollView replace LinkagePager
 >* More CoordinatorLayout.Behavior...
