@@ -84,6 +84,9 @@ bPager.setLinkagePager(aPager);
 
 
 #### To Enable Overlapping
+<img src="https://cloud.githubusercontent.com/assets/8496187/15041789/0aa0850c-12bf-11e6-8795-f5a8196cf114.png"/>
+
+
 ```java
 mPagerContainer.setOverlapEnabled(true);
 ```
