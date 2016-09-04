@@ -120,17 +120,21 @@ public class PagerContainer extends FrameLayout implements ViewPager.OnPageChang
 
           if (object instanceof Fragment) {
             Fragment fragment = (Fragment) object;
-            if (loopCounter == position) {
-              ViewCompat.setElevation(fragment.getView(), 8.0f);
-            } else {
-              ViewCompat.setElevation(fragment.getView(), 0.0f);
+            if (fragment.getView() != null) {
+              if (loopCounter == position) {
+                ViewCompat.setElevation(fragment.getView(), 8.0f);
+              } else {
+                ViewCompat.setElevation(fragment.getView(), 0.0f);
+              }
             }
           } else {
             ViewGroup view = (ViewGroup) object;
-            if (loopCounter == position) {
-              ViewCompat.setElevation(view, 8.0f);
-            } else {
-              ViewCompat.setElevation(view, 0.0f);
+            if (view != null) {
+              if (loopCounter == position) {
+                ViewCompat.setElevation(view, 8.0f);
+              } else {
+                ViewCompat.setElevation(view, 0.0f);
+              }
             }
           }
         }
