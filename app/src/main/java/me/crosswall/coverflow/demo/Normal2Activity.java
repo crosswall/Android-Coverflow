@@ -2,7 +2,6 @@ package me.crosswall.coverflow.demo;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.view.LinkagePager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,10 +9,10 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import me.crosswall.lib.coverflow.CoverFlow;
-import me.crosswall.lib.coverflow.core.LinkageCoverTransformer;
-import me.crosswall.lib.coverflow.core.LinkagePagerContainer;
+import me.crosswall.lib.coverflow.core.PageItemClickListener;
 import me.crosswall.lib.coverflow.core.PagerContainer;
 
 public class Normal2Activity extends AppCompatActivity {
@@ -34,6 +33,13 @@ public class Normal2Activity extends AppCompatActivity {
         pager.setOffscreenPageLimit(adapter.getCount());
 
         pager.setClipChildren(false);
+
+        mContainer.setPageItemClickListener(new PageItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(Normal2Activity.this,"position:" + position,Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         boolean showRotate = getIntent().getBooleanExtra("showRotate",true);

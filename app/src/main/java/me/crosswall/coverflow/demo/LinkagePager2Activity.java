@@ -17,6 +17,7 @@ import android.widget.TextView;
 import me.crosswall.coverflow.demo.view.DataDemoView;
 import me.crosswall.lib.coverflow.CoverFlow;
 import me.crosswall.lib.coverflow.core.LinkagePagerContainer;
+import me.crosswall.lib.coverflow.core.PageItemClickListener;
 
 /**
  * Created by yuweichen on 16/5/3.
@@ -52,6 +53,13 @@ public class LinkagePager2Activity extends AppCompatActivity{
         });
 
         customPagerContainer = (LinkagePagerContainer) findViewById(R.id.pager_container);
+
+        customPagerContainer.setPageItemClickListener(new PageItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                pager.setCurrentItem(position);
+            }
+        });
 
         tab = findViewById(R.id.tab);
 

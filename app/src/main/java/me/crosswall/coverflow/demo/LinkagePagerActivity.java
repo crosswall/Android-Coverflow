@@ -5,6 +5,7 @@ import android.graphics.Color;
 import me.crosswall.lib.coverflow.CoverFlow;
 import me.crosswall.lib.coverflow.core.LinkageCoverTransformer;
 import me.crosswall.lib.coverflow.core.LinkagePagerContainer;
+import me.crosswall.lib.coverflow.core.PageItemClickListener;
 
 import android.support.v4.view.LinkagePager;
 import android.support.v4.view.PagerAdapter;
@@ -32,14 +33,20 @@ public class LinkagePagerActivity extends AppCompatActivity {
 
         pager.setOffscreenPageLimit(adapter.getCount());
 
-        LinkagePager bindingPager = (LinkagePager) findViewById(R.id.pager);
+        final LinkagePager bindingPager = (LinkagePager) findViewById(R.id.pager);
         bindingPager.setAdapter(adapter);
         bindingPager.setOffscreenPageLimit(adapter.getCount());
         bindingPager.setLinkagePager(pager);
-        pager.setClipChildren(false);
-        pager.setLinkagePager(bindingPager);
 
+        pager.setClipChildren(false);
         pager.setPageTransformer(false,new LinkageCoverTransformer(0.3f,0f,0f,0f));
+
+        mContainer.setPageItemClickListener(new PageItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                bindingPager.setCurrentItem(position);
+            }
+        });
 
     }
 

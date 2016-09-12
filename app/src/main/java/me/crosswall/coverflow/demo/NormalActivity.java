@@ -1,20 +1,18 @@
 package me.crosswall.coverflow.demo;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import me.crosswall.lib.coverflow.CoverFlow;
+import me.crosswall.lib.coverflow.core.PageItemClickListener;
 import me.crosswall.lib.coverflow.core.PagerContainer;
 
 /**
@@ -34,6 +32,13 @@ public class NormalActivity extends AppCompatActivity{
         pager.setClipChildren(false);
        //
         pager.setOffscreenPageLimit(15);
+
+        container.setPageItemClickListener(new PageItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(NormalActivity.this,"position:" + position,Toast.LENGTH_SHORT).show();
+            }
+        });
 
         boolean showTransformer = getIntent().getBooleanExtra("showTransformer",false);
 
