@@ -24,7 +24,7 @@ allprojects {
 #####Step 2. Add the dependency
 ```build
 dependencies {
-	compile 'com.github.crosswall:Android-Coverflow:release-v1.0.3'
+	compile 'com.github.crosswall:Android-Coverflow:release-v1.0.4'
 }
 ```
 
@@ -51,6 +51,16 @@ dependencies {
              .build();
 
 ```
+
+```click
+container.setPageItemClickListener(new PageItemClickListener() {
+    @Override
+    public void onItemClick(View view, int position) {
+        //Toast.makeText(context,"position:" + position,Toast.LENGTH_SHORT).show();
+      }
+    });
+```
+
 
 #### Two viewpagers synchronized scrolling.
 ```layout
