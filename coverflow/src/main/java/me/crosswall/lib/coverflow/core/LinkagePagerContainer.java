@@ -13,16 +13,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 
-/**
- * PagerContainer: A layout that displays a ViewPager with its children that are outside
- * the typical pager bounds.
- *    @see(<a href = "https://gist.github.com/devunwired/8cbe094bb7a783e37ad1"></>)
- */
 public class LinkagePagerContainer extends FrameLayout implements LinkagePager.OnPageChangeListener {
 
     private LinkagePager mPager;
-    boolean mNeedsRedraw = false;
-    boolean isOverlapEnabled = false;
+    private boolean mNeedsRedraw = false;
+    private boolean isOverlapEnabled = false;
+    private PageItemClickListener pageItemClickListener;
+
 
     public LinkagePagerContainer(Context context) {
         super(context);
@@ -53,6 +50,9 @@ public class LinkagePagerContainer extends FrameLayout implements LinkagePager.O
         isOverlapEnabled = overlapEnabled;
     }
 
+    public void setPageItemClickListener(PageItemClickListener pageItemClickListener) {
+        this.pageItemClickListener = pageItemClickListener;
+    }
 
     @SuppressLint("MissingSuperCall")
     @Override
@@ -71,9 +71,6 @@ public class LinkagePagerContainer extends FrameLayout implements LinkagePager.O
 
     private Point mCenter = new Point();
     private Point mInitialTouch = new Point();
-    private Point bindingTouch = new Point();
-
-
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -84,17 +81,23 @@ public class LinkagePagerContainer extends FrameLayout implements LinkagePager.O
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        //We capture any touches not already handled by the ViewPager
-        // to implement scrolling from a touch outside the pager bounds.
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                mInitialTouch.x = (int)ev.getX();
-                mInitialTouch.y = (int)ev.getY();
-            default:
-                float deltaX = mCenter.x - mInitialTouch.x;
-                float deltaY = mCenter.y - mInitialTouch.y;
-                //  Log.d("@@@@","deltaX:"+ deltaX + "," + "deltaY" + deltaY);
-                ev.offsetLocation(deltaX, deltaY);
+                mInitialTouch.x = (int) ev.getX();
+                mInitialTouch.y = (int) ev.getY();
+                ev.offsetLocation(mCenter.x - mInitialTouch.x, mCenter.y - mInitialTouch.y);
+                break;
+            case MotionEvent.ACTION_UP:
+                int delta = Utils.isInNonTappableRegion(getWidth(),mPager.getWidth(),mInitialTouch.x, ev.getX());
+                if(delta!=0){
+                    int preItem = mPager.getCurrentItem();
+                    int currentItem = preItem + delta;
+                    mPager.setCurrentItem(currentItem);
+                    ev.offsetLocation(mCenter.x - mInitialTouch.x, mCenter.y - mInitialTouch.y);
+                    if (pageItemClickListener != null) {
+                        pageItemClickListener.onItemClick(mPager.getChildAt(currentItem), currentItem);
+                    }
+                }
                 break;
         }
 
@@ -104,8 +107,6 @@ public class LinkagePagerContainer extends FrameLayout implements LinkagePager.O
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        //Force the container to redraw on scrolling.
-        //Without this the outer pages render initially and then stay static
         if (mNeedsRedraw) invalidate();
     }
 

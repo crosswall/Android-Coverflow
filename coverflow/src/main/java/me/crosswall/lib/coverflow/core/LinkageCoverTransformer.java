@@ -2,7 +2,6 @@ package me.crosswall.lib.coverflow.core;
 import android.support.v4.view.LinkagePager;
 import android.view.View;
 
-import me.crosswall.lib.coverflow.ScrollUtils;
 
 /**
  * Created by yuweichen on 16/4/29.
@@ -36,7 +35,7 @@ public class LinkageCoverTransformer implements LinkagePager.PageTransformer {
        // Log.d(TAG,"position:"+position);
 
         if (scale != 0f) {
-            float realScale = ScrollUtils.getFloat(1 - Math.abs(position * scale),SCALE_MIN,SCALE_MAX);
+            float realScale = Utils.getFloat(1 - Math.abs(position * scale),SCALE_MIN,SCALE_MAX);
             page.setScaleX(realScale);
             page.setScaleY(realScale);
         }
@@ -46,7 +45,7 @@ public class LinkageCoverTransformer implements LinkagePager.PageTransformer {
             float realPagerMargin = position * (pagerMargin);
 
             if (spaceValue != 0) {
-                float realSpaceValue = ScrollUtils.getFloat(Math.abs(position * spaceValue),MARGIN_MIN,MARGIN_MAX);
+                float realSpaceValue = Utils.getFloat(Math.abs(position * spaceValue),MARGIN_MIN,MARGIN_MAX);
                 realPagerMargin += (position > 0) ? realSpaceValue : - realSpaceValue;
             }
 
