@@ -13,6 +13,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 
+/**
+ * PagerContainer: A layout that displays a ViewPager with its children that are outside
+ * the typical pager bounds.
+ *
+ * @see(<a href = "https://gist.github.com/devunwired/8cbe094bb7a783e37ad1"></>)
+ */
 public class LinkagePagerContainer extends FrameLayout implements LinkagePager.OnPageChangeListener {
 
     private LinkagePager mPager;
