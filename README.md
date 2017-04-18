@@ -1,17 +1,17 @@
-##Android-CoverFlow
+## Android-CoverFlow
 A beautiful cover flow for android platform , base on ViewPager.
 
-###[Demo Vedio](https://youtu.be/2FEp33kisz4)
+### [Demo Vedio](https://youtu.be/2FEp33kisz4)
 
-##GIF
+## GIF
 <img src="https://github.com/crosswall/Android-Coverflow/blob/master/gif/3.pic_hd.gif" width="40%" height="40%">
 
-###Thanks
+### Thanks
 [vincent-paing](https://github.com/vincent-paing) 
 
 
-###Build
-#####Step 1. Add the JitPack repository to your build file
+### Build
+##### Step 1. Add the JitPack repository to your build file
 ```build
 allprojects {
 	repositories {
@@ -21,14 +21,14 @@ allprojects {
 }
 ```
 
-#####Step 2. Add the dependency
+##### Step 2. Add the dependency
 ```build
 dependencies {
 	compile 'com.github.crosswall:Android-Coverflow:release-v1.0.4'
 }
 ```
 
-###Layout.xml
+### Layout.xml
 
 ```layout
 <me.crosswall.lib.coverflow.core.PagerContainer
@@ -112,12 +112,12 @@ You might want to manually set the first view to be elevated, this can easily be
     });
 ```
 
-###TODO
+### TODO
 >* HorizontalScrollView replace LinkagePager
 >* More CoordinatorLayout.Behavior...
 >* More Configurations...
 
-###Lincense
+### Lincense
 ```lincense
 The MIT License (MIT)
 
