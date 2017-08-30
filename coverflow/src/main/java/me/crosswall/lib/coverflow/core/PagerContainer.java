@@ -90,7 +90,6 @@ public class PagerContainer extends FrameLayout implements ViewPager.OnPageChang
             case MotionEvent.ACTION_DOWN:
                 mInitialTouch.x = (int) ev.getX();
                 mInitialTouch.y = (int) ev.getY();
-                ev.offsetLocation(mCenter.x - mInitialTouch.x, mCenter.y - mInitialTouch.y);
                 break;
             case MotionEvent.ACTION_UP:
                 int delta = Utils.isInNonTappableRegion(getWidth(),mPager.getWidth(),mInitialTouch.x, ev.getX());
