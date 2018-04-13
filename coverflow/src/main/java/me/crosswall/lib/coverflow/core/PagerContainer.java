@@ -24,6 +24,10 @@ public class PagerContainer extends FrameLayout implements ViewPager.OnPageChang
     boolean mNeedsRedraw = false;
     boolean isOverlapEnabled = false;
     private PageItemClickListener pageItemClickListener;
+    private long pressStartTime;
+    private float startX, endX;
+    private boolean stayedWithinClickDistance;
+    private float range, middle;
 
     public PagerContainer(Context context) {
         super(context);
@@ -74,7 +78,6 @@ public class PagerContainer extends FrameLayout implements ViewPager.OnPageChang
     }
 
     private Point mCenter = new Point();
-    private Point mInitialTouch = new Point();
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -83,30 +86,46 @@ public class PagerContainer extends FrameLayout implements ViewPager.OnPageChang
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent ev) {
+    public boolean onTouchEvent(MotionEvent event) {
         //We capture any touches not already handled by the ViewPager
         // to implement scrolling from a touch outside the pager bounds.
-        switch (ev.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                mInitialTouch.x = (int) ev.getX();
-                mInitialTouch.y = (int) ev.getY();
-                ev.offsetLocation(mCenter.x - mInitialTouch.x, mCenter.y - mInitialTouch.y);
-                break;
-            case MotionEvent.ACTION_UP:
-                int delta = Utils.isInNonTappableRegion(getWidth(),mPager.getWidth(),mInitialTouch.x, ev.getX());
-                if(delta!=0){
-                    int preItem = mPager.getCurrentItem();
-                    int currentItem = preItem + delta;
-                    mPager.setCurrentItem(currentItem);
-                    ev.offsetLocation(mCenter.x - mInitialTouch.x, mCenter.y - mInitialTouch.y);
-                    if (pageItemClickListener != null) {
-                        pageItemClickListener.onItemClick(mPager.getChildAt(currentItem), currentItem);
-                    }
+
+
+        range  = mPager.getWidth() / 2;
+        middle = this.getWidth() / 2;
+
+        switch(event.getAction()) {
+            case MotionEvent.ACTION_DOWN: {
+                pressStartTime = System.currentTimeMillis();
+                stayedWithinClickDistance = true;
+                startX = event.getX();
+            }
+            case MotionEvent.ACTION_MOVE: {
+                if (stayedWithinClickDistance && Math.abs(event.getX() - startX) > Utils.convertDpToPixel(10, getContext())) {
+                    stayedWithinClickDistance = false;
                 }
                 break;
+            }
+            case MotionEvent.ACTION_UP: {
+                long pressDuration = System.currentTimeMillis() - pressStartTime;
+                if (pressDuration < 1000 && stayedWithinClickDistance) {
+                    endX = event.getX();
+                    if (Math.abs(endX - startX) < 10) {
+                        int currentItem = mPager.getCurrentItem();
+                        if (endX > middle + range && currentItem < mPager.getAdapter().getCount()) {
+                            mPager.setCurrentItem(currentItem + 1);
+                        } else if (endX < middle - range && currentItem > 0) {
+                            mPager.setCurrentItem(currentItem - 1);
+                        } else if (endX < middle + range && endX > middle - range) {
+                            if (this.pageItemClickListener != null) {
+                                pageItemClickListener.onItemClick(mPager.getChildAt(currentItem), currentItem);
+                            }
+                        }
+                    }
+                }
+            }
         }
-
-        return mPager.dispatchTouchEvent(ev);
+        return mPager.dispatchTouchEvent(event);
     }
 
 
