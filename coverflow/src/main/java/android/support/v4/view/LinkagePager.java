@@ -2224,6 +2224,10 @@ public class LinkagePager extends ViewGroup {
         boolean leftAbsolute = true;
         boolean rightAbsolute = true;
 
+        if(mItems.size() <= 0) {
+            return true;
+        }
+
         final ItemInfo firstItem = mItems.get(0);
         final ItemInfo lastItem = mItems.get(mItems.size() - 1);
         if (firstItem.position != 0) {
