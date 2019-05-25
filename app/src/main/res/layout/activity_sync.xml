@@ -12,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="180dp">
 
-        <android.support.v4.view.LinkagePager
+        <androidx.viewpager.widget.LinkagePager
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"/>
 
     </me.crosswall.lib.coverflow.core.LinkagePagerContainer>
 
-    <android.support.v4.view.LinkagePager
+    <androidx.viewpager.widget.LinkagePager
         android:id="@+id/pager"
         android:layout_gravity="center"
         android:layout_width="match_parent"

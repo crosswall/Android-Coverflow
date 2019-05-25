@@ -2,10 +2,10 @@ package me.crosswall.coverflow.demo;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.view.LinkagePager;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -13,11 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.logging.Logger;
-
 import me.crosswall.lib.coverflow.core.CoverTransformer;
-import me.crosswall.lib.coverflow.core.LinkageCoverTransformer;
-import me.crosswall.lib.coverflow.core.LinkagePagerContainer;
 import me.crosswall.lib.coverflow.core.PagerContainer;
 
 public class Linkage0PagerActivity extends AppCompatActivity {

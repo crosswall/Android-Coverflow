@@ -8,8 +8,8 @@ import android.util.DisplayMetrics;
  * Created by yuweichen on 16/4/29.
  */
 public class Utils {
-    
-    public static int isInNonTappableRegion(int containerWidth,int pagerWidth,float oldX, float newX) {
+
+    public static int isInNonTappableRegion(int containerWidth, int pagerWidth, float oldX, float newX) {
         int tappableWidth = pagerWidth;
         int totalWidth = containerWidth;
         int nonTappableWidth = (totalWidth - tappableWidth) / 2;
@@ -23,7 +23,7 @@ public class Utils {
         return 0;
     }
 
-    public static float getFloat(float value,float minValue,float maxValue){
+    public static float getFloat(float value, float minValue, float maxValue) {
         return Math.min(maxValue, Math.max(minValue, value));
     }
 

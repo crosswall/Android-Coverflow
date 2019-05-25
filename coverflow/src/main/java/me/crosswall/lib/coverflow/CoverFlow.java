@@ -1,7 +1,7 @@
 package me.crosswall.lib.coverflow;
 
-import android.support.v4.view.LinkagePager;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.LinkagePager;
+import androidx.viewpager.widget.ViewPager;
 
 import me.crosswall.lib.coverflow.core.CoverTransformer;
 import me.crosswall.lib.coverflow.core.LinkageCoverTransformer;
@@ -11,11 +11,11 @@ import me.crosswall.lib.coverflow.core.LinkageCoverTransformer;
  */
 public class CoverFlow {
 
-  //  public static final float DEFAULT_SCALE_VALUE  = 0.3f;
+    //  public static final float DEFAULT_SCALE_VALUE  = 0.3f;
 
-  //  public static final float DEFAULT_PAGER_MARGIN = 0f;
+    //  public static final float DEFAULT_PAGER_MARGIN = 0f;
 
- //   public static final float DEFAULT_SPACE_SIZE   = 0f;
+    //   public static final float DEFAULT_SPACE_SIZE   = 0f;
 
     private final ViewPager viewPager;
     private final LinkagePager linkagePager;
@@ -24,25 +24,25 @@ public class CoverFlow {
     private final float spaceSize;
     private final float rotationY;
 
-    public CoverFlow(CoverFlow.Builder builder){
+    public CoverFlow(CoverFlow.Builder builder) {
 
-        if(null==builder){
+        if (null == builder) {
             throw new IllegalArgumentException("A non-null CoverFlow.Builde must be provided");
         }
 
         this.viewPager = builder.viewPager;
         this.linkagePager = builder.linkagePager;
-        this.scaleValue  = builder.scaleValue;
+        this.scaleValue = builder.scaleValue;
         this.pagerMargin = builder.pagerMargin;
-        this.spaceSize   = builder.spaceSize;
-        this.rotationY   = builder.rotationY;
+        this.spaceSize = builder.spaceSize;
+        this.rotationY = builder.rotationY;
 
-        if(this.viewPager != null){
+        if (this.viewPager != null) {
             this.viewPager.setPageTransformer(false,
-                    new CoverTransformer(this.scaleValue,this.pagerMargin,this.spaceSize,this.rotationY));
-        }else if(this.linkagePager !=null){
+                    new CoverTransformer(this.scaleValue, this.pagerMargin, this.spaceSize, this.rotationY));
+        } else if (this.linkagePager != null) {
             this.linkagePager.setPageTransformer(false,
-                    new LinkageCoverTransformer(this.scaleValue,this.pagerMargin,this.spaceSize,this.rotationY));
+                    new LinkageCoverTransformer(this.scaleValue, this.pagerMargin, this.spaceSize, this.rotationY));
         }
 
 
@@ -61,7 +61,7 @@ public class CoverFlow {
             return this;
         }
 
-        public CoverFlow.Builder withLinkage(LinkagePager linkagePager){
+        public CoverFlow.Builder withLinkage(LinkagePager linkagePager) {
             this.linkagePager = linkagePager;
             return this;
         }
@@ -82,7 +82,7 @@ public class CoverFlow {
             return this;
         }
 
-        public CoverFlow.Builder rotationY(float rotationY){
+        public CoverFlow.Builder rotationY(float rotationY) {
             this.rotationY = rotationY;
             return this;
         }
