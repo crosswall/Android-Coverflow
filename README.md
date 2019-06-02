@@ -11,6 +11,16 @@ A beautiful cover flow for android platform , base on ViewPager.
 
 
 ### Build
+
+#### AndroidX
+```groovy
+dependencies {
+    implementation 'com.github.lizhuogui.android:coverflow:2.0.0'
+}
+```
+
+#### support library
+
 ##### Step 1. Add the JitPack repository to your build file
 ```build
 allprojects {

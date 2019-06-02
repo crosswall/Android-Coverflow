@@ -6,8 +6,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 2
-        versionName "1.0.2"
+        versionCode 200
+        versionName "2.0.0"
     }
     buildTypes {
         release {
@@ -28,3 +28,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation rootProject.ext.legacySupportV4
 }
+
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
